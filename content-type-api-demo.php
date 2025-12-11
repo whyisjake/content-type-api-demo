@@ -721,7 +721,8 @@ function books_demo_register_content_type() {
 			'has_archive'  => true,
 			'show_in_rest' => true,
 			'rest_base'    => 'books',
-			'supports'     => array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ),
+			'supports'     => array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields', 'author' ),
+			'taxonomies'   => array( 'category' ),
 			'menu_icon'    => 'dashicons-book-alt',
 			'rewrite'      => array( 'slug' => 'books' ),
 
