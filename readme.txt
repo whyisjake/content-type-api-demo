@@ -71,9 +71,9 @@ This plugin includes a complete "Books" content type demo that showcases:
 
 = Try It in WordPress Playground =
 
-You can try this plugin instantly in your browser using WordPress Playground:
+You can try this plugin instantly in your browser using WordPress Playground (includes sample book data):
 
-[Launch Demo in Playground](https://playground.wordpress.net/?plugin=content-type-api-demo)
+[Launch Demo in Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/whyisjake/content-type-api-demo/main/blueprint.json)
 
 = Related Links =
 
