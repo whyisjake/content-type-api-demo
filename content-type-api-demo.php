@@ -1050,3 +1050,102 @@ function books_demo_admin_notice() {
 	<?php
 }
 add_action( 'admin_notices', 'books_demo_admin_notice' );
+
+/**
+ * Add custom columns to the Books list table.
+ *
+ * @param array $columns Existing columns.
+ * @return array Modified columns.
+ */
+function books_demo_customize_columns( $columns ) {
+	// Remove author and categories columns.
+	unset( $columns['author'] );
+	unset( $columns['categories'] );
+
+	$new_columns = array();
+
+	foreach ( $columns as $key => $value ) {
+		$new_columns[ $key ] = $value;
+
+		// Add custom columns after the title.
+		if ( 'title' === $key ) {
+			$new_columns['book_author'] = __( 'Author', 'content-type-demo' );
+			$new_columns['book_genre']  = __( 'Genre', 'content-type-demo' );
+			$new_columns['book_year']   = __( 'Year', 'content-type-demo' );
+		}
+	}
+
+	return $new_columns;
+}
+add_filter( 'manage_book_posts_columns', 'books_demo_customize_columns' );
+
+/**
+ * Display custom column content in the Books list table.
+ *
+ * @param string $column  Column name.
+ * @param int    $post_id Post ID.
+ */
+function books_demo_render_custom_column( $column, $post_id ) {
+	switch ( $column ) {
+		case 'book_author':
+			$author = get_post_meta( $post_id, 'author_name', true );
+			echo esc_html( $author ? $author : '—' );
+			break;
+
+		case 'book_genre':
+			$genre = get_post_meta( $post_id, 'genre', true );
+			echo esc_html( $genre ? ucfirst( $genre ) : '—' );
+			break;
+
+		case 'book_year':
+			$year = get_post_meta( $post_id, 'published_year', true );
+			echo esc_html( $year ? $year : '—' );
+			break;
+	}
+}
+add_action( 'manage_book_posts_custom_column', 'books_demo_render_custom_column', 10, 2 );
+
+/**
+ * Make custom columns sortable.
+ *
+ * @param array $columns Sortable columns.
+ * @return array Modified sortable columns.
+ */
+function books_demo_sortable_columns( $columns ) {
+	$columns['book_author'] = 'book_author';
+	$columns['book_genre']  = 'book_genre';
+	$columns['book_year']   = 'book_year';
+	return $columns;
+}
+add_filter( 'manage_edit-book_sortable_columns', 'books_demo_sortable_columns' );
+
+/**
+ * Handle sorting by custom columns.
+ *
+ * @param WP_Query $query The query object.
+ */
+function books_demo_orderby_columns( $query ) {
+	if ( ! is_admin() || ! $query->is_main_query() ) {
+		return;
+	}
+
+	$orderby = $query->get( 'orderby' );
+
+	switch ( $orderby ) {
+		case 'book_author':
+			$query->set( 'meta_key', 'author_name' );
+			$query->set( 'orderby', 'meta_value' );
+			break;
+
+		case 'book_genre':
+			$query->set( 'meta_key', 'genre' );
+			$query->set( 'orderby', 'meta_value' );
+			break;
+
+		case 'book_year':
+			$query->set( 'meta_key', 'published_year' );
+			$query->set( 'orderby', 'meta_value_num' );
+			break;
+	}
+}
+add_action( 'pre_get_posts', 'books_demo_orderby_columns' );
