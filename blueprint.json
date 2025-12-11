@@ -16,7 +16,7 @@
 		},
 		{
 			"step": "runPHP",
-			"code": "<?php require_once '/wordpress/wp-load.php'; wp_update_user( array( 'ID' => 1, 'display_name' => 'Michael Crichton', 'first_name' => 'Michael', 'last_name' => 'Crichton', 'nickname' => 'Michael Crichton' ) ); ?>"
+			"code": "<?php require_once '/wordpress/wp-load.php'; wp_update_user( array( 'ID' => 1, 'display_name' => 'Michael Crichton', 'first_name' => 'Michael', 'last_name' => 'Crichton', 'nickname' => 'Michael Crichton' ) ); wp_update_term( 1, 'category', array( 'name' => 'Review', 'slug' => 'review' ) ); ?>"
 		},
 		{
 			"step": "login",
