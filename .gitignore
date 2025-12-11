@@ -1,0 +1,28 @@
+# IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Composer
+/vendor/
+composer.lock
+
+# Node
+/node_modules/
+package-lock.json
+
+# Build
+/dist/
+/build/
+
+# Logs
+*.log
+
+# Local config
+.env
+wp-config-local.php
