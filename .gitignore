@@ -1,6 +1,7 @@
 # IDE
 .idea/
-.vscode/
+.vscode/*
+!.vscode/settings.json
 *.sublime-project
 *.sublime-workspace
 

@@ -1,0 +1,8 @@
+{
+	"phpsab.executablePathCS": "./vendor/bin/phpcs",
+	"phpsab.executablePathCBF": "./vendor/bin/phpcbf",
+	"phpsab.standard": "./phpcs.xml.dist",
+	"phpsab.autoRulesetSearch": false,
+	"phpsab.fixerEnable": true,
+	"phpsab.snifferEnable": true
+}
