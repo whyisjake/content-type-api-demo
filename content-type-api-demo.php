@@ -1042,7 +1042,8 @@ function books_demo_admin_notice() {
 		<p>
 			<strong><?php esc_html_e( 'Content Type API Demo', 'content-type-demo' ); ?></strong> -
 			<?php esc_html_e( 'This "Books" content type was registered using the new register_content_type() API proposed for WordPress 7.0.', 'content-type-demo' ); ?>
-			<a href="https://github.com/WordPress/wordpress-develop/pull/10617" target="_blank"><?php esc_html_e( 'View the RFC/PR', 'content-type-demo' ); ?></a>
+			<a href="https://github.com/WordPress/wordpress-develop/pull/10617" target="_blank"><?php esc_html_e( 'View the RFC/PR', 'content-type-demo' ); ?></a> |
+			<a href="https://github.com/whyisjake/content-type-api-demo" target="_blank"><?php esc_html_e( 'View Plugin Source', 'content-type-demo' ); ?></a>
 		</p>
 	</div>
 	<?php
